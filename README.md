@@ -18,7 +18,7 @@ in-sync, one pod at a time in each LWS, by manually decrementing LWS
     $ kind create cluster
     ```
 
-1. Install the LWS operator
+1. Install the LWS operator v0.7.0
 
     ```
     $ kubectl apply --server-side -f https://github.com/kubernetes-sigs/lws/releases/download/0.7.0/manifests.yaml
@@ -38,7 +38,7 @@ in-sync, one pod at a time in each LWS, by manually decrementing LWS
     $ kubectl apply -f config/1.26
     ```
 
-    Both LWSs are configured to run nginx **v1.26**.
+    Both LWSs are configured to run 3 nginx **v1.26** replicas.
 
 1. Open a new terminal and watch pods until their status is RUNNING.
 
@@ -60,7 +60,7 @@ in-sync, one pod at a time in each LWS, by manually decrementing LWS
     $ kubectl apply -f config/1.27
     ```
 
-    Notice no pods are being terminated and created:
+    In the watch terminal, notice no pods are being terminated and created:
     - `maxSurge` set to 0  prevents the number of replicas to go above the number of replicas (3 in this example)
     - `partition` set to 3 prevents replicas of ordinal index below 3 to be updated
 
